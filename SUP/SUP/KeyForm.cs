@@ -8,18 +8,20 @@ using System.Timers;
 
 namespace SUP
 {
-    class KeyForm : Form
+    class HotkeyControl : Form
     {
-
+        //Hot-key checkers
         private KeyHandler CheckSpace;
         private KeyHandler CheckEnter;
+        private KeyHandler CheckE;
 
         //1000 = 1 sec
         public int TimerTime = 2000;
+        //The timer for when the app starts after a key is pressed
         public System.Timers.Timer ShowMe;
 
 
-        public KeyForm()
+        public HotkeyControl()
         {
 
             //Timer for when the program shows up
@@ -31,8 +33,12 @@ namespace SUP
 
             CheckEnter = new KeyHandler(Keys.Enter, this);
             CheckEnter.Register();
+
+            CheckE = new KeyHandler(Keys.E, this);
+            CheckE.Register();
         }
 
+        //The function that is called when a hot-key is pressed
         private void HandleHotkey()
         {
             ShowMe.Enabled = true;
