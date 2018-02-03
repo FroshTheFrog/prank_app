@@ -10,9 +10,6 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace SUP
@@ -40,6 +37,7 @@ namespace SUP
             main = this;
 
             k = new HotkeyControl();
+
             //Set of hotkey timer
             k.ShowMe.Elapsed += OnTimedEvent;
 
@@ -51,7 +49,7 @@ namespace SUP
             Closing += MainWindow_Closing;
 
             ////So that it can't be minimized
-            //StateChanged += TriedToCloseMe;
+            //!StateChanged += TriedToCloseMe;
 
             Hide();
 
