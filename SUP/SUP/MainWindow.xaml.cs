@@ -12,6 +12,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using System.Timers;
 
 namespace SUP
 {
@@ -28,7 +29,7 @@ namespace SUP
         static MainWindow main;
 
         //The questions that will be used for the test
-        public static Test MyTest;
+        public static Test MyTest = new Test();
 
         //The number of right answers that the user has answered in a row
         public static int AnswerIndex = 0;
@@ -43,14 +44,17 @@ namespace SUP
         //if the app can close
         public static bool CanClose = false;
 
+        //if the user can take the test
+        public static bool CanTest = true;
+
+        public static Timer TestAgainTimer;
+
+        public const int TestAgainTime = 30000;
+
 
         public MainWindow()
         {
             InitializeComponent();
-
-            v = new VolumeControl();
-            //setup volume control timer
-            v.SetMaxVolumeTime.Elapsed += OnTimedEventVolume;
 
             main = this;
 
@@ -90,16 +94,12 @@ namespace SUP
             WindowState = WindowState.Maximized;
             WindowStyle = WindowStyle.None;
 
+            //Find the progress bar showing the time until the user can take the test again
+            ProgressUntilTestAgain.Visibility = Visibility.Hidden;
+
 
             //Hind everything user the question event is triggered
-            textBlock.Visibility = Visibility.Hidden;
-            QuestionText.Visibility = Visibility.Hidden;
-            TextRightAnswers.Visibility = Visibility.Hidden;
-            TextWrongAnswers.Visibility = Visibility.Hidden;
-            button.Visibility = Visibility.Hidden;
-            button1.Visibility = Visibility.Hidden;
-            button2.Visibility = Visibility.Hidden;
-            button3.Visibility = Visibility.Hidden;
+            HideEverything();
 
             TextWrongAnswers.Text = "Wrong Answers Left: " + (WrongAnswerMax - WrongAnswerIndex).ToString();
         }
@@ -124,6 +124,9 @@ namespace SUP
             v = new VolumeControl();
             v.SetToMaxVolume();
 
+            //setup volume control timer
+            v.SetMaxVolumeTime.Elapsed += OnTimedEventVolume;
+
             //Turn off other timer
             k.ShowMe.Interval = k.TimerTime;
             k.ShowMe.Enabled = false;
@@ -133,12 +136,13 @@ namespace SUP
         //Cancel window closing event keeping the user from being able to close the window
         private void MainWindow_Closing(object sender, CancelEventArgs e) {
 
-            if(!CanClose)
+            if (!CanClose)
+            {
                 e.Cancel = true;
+                if(CanTest)
+                    QuetionEvent();
 
-            QuetionEvent();
-
-
+            }
         }
 
         void TriedToCloseMe(object sender, EventArgs e)
@@ -147,12 +151,7 @@ namespace SUP
             WindowState = WindowState.Maximized;
         }
 
-        private void textBlock_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-
-        }
-
+        private void textBlock_TextChanged(object sender, TextChangedEventArgs e) { }
 
 
         void SetNextQuesiton()
@@ -161,28 +160,71 @@ namespace SUP
             //So that is program can have random numbers
             Random rnd = new Random();
 
-            //The Question that will be used
-            Question q = MyTest.TheQuetions[rnd.Next(MyTest.TheQuetions.Count())];
+            if (MyTest.TheQuetions.Count() > 0)
+            {
 
-            TheAnswer = q.AnsList[3];
+                //The Question that will be used
+                Question q = MyTest.TheQuetions[rnd.Next(MyTest.TheQuetions.Count())];
 
-            QuestionText.Text = q.TheQuestion;
+                TheAnswer = q.AnsList[3];
 
-            //Random answers for each button
-            button.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
-            q.AnsList.Remove(button.Content.ToString());
+                QuestionText.Text = q.TheQuestion;
 
-            button1.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
-            q.AnsList.Remove(button1.Content.ToString());
+                //Random answers for each button
+                button.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
+                q.AnsList.Remove(button.Content.ToString());
 
-            button2.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
-            q.AnsList.Remove(button2.Content.ToString());
+                button1.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
+                q.AnsList.Remove(button1.Content.ToString());
 
-            button3.Content = q.AnsList[0];
-            q.AnsList.Remove(button3.Content.ToString());
+                button2.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
+                q.AnsList.Remove(button2.Content.ToString());
 
-            //So that the question can to be picked again
-            MyTest.TheQuetions.Remove(q);
+                button3.Content = q.AnsList[0];
+                q.AnsList.Remove(button3.Content.ToString());
+
+                //So that the question can to be picked again
+                MyTest.TheQuetions.Remove(q);
+            }
+
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("WOW YOU SUCK! Your out of questions");
+                CloseApp();
+            }
+        }
+
+        //Close of window/app
+        void CloseApp()
+        {
+
+            CanClose = true;
+            main.Close();
+        }
+
+        //Hind all the elements on the screen associated with the test
+        void HideEverything()
+        {
+            TextRightAnswers.Visibility = Visibility.Hidden;
+            TextWrongAnswers.Visibility = Visibility.Hidden;
+            QuestionText.Visibility = Visibility.Hidden;
+            button.Visibility = Visibility.Hidden;
+            button1.Visibility = Visibility.Hidden;
+            button2.Visibility = Visibility.Hidden;
+            button3.Visibility = Visibility.Hidden;
+
+        }
+
+        //Show all the elements on the screen associated with the test
+        void ShowEverything()
+        {
+            TextRightAnswers.Visibility = Visibility.Visible;
+            TextWrongAnswers.Visibility = Visibility.Visible;
+            QuestionText.Visibility = Visibility.Visible;
+            button.Visibility = Visibility.Visible;
+            button1.Visibility = Visibility.Visible;
+            button2.Visibility = Visibility.Visible;
+            button3.Visibility = Visibility.Visible;
         }
 
 
@@ -190,24 +232,51 @@ namespace SUP
         void QuetionEvent()
         {
 
-            //A reference to the lest of questions
-            MyTest = new Test();
+            //So that it only trigger the first time the user start the test
+            if (TestAgainTimer == null)
+                System.Windows.Forms.MessageBox.Show("Oh! It looks like you want your computer back. Answer three question correctly in a row to get it back");
 
-
-            textBlock.Text = "Oh! It looks like you want your computer back. Answer three right question in a row to get it back";
+            CanTest = false;
 
             //Make everything visible
-            TextRightAnswers.Visibility = Visibility.Visible;
-            TextWrongAnswers.Visibility = Visibility.Visible;
-            textBlock.Visibility = Visibility.Visible;
-            QuestionText.Visibility = Visibility.Visible;
-            button.Visibility = Visibility.Visible;
-            button1.Visibility = Visibility.Visible;
-            button2.Visibility = Visibility.Visible;
-            button3.Visibility = Visibility.Visible;
-
+            ShowEverything();
 
             SetNextQuesiton();
+        }
+
+        //Ends the current test
+        void QuestionEventEnd()
+        {
+
+            HideEverything();
+
+            System.Windows.Forms.MessageBox.Show("Too bad, you ran out of tries. Wait " + (TestAgainTime / 1000) + "s to try again");
+
+            //Test timer until the user can take the test again
+            TestAgainTimer = new Timer { Interval = TestAgainTime, Enabled = true };
+            TestAgainTimer.Elapsed += OnTestAgainTimer;
+
+            ProgressUntilTestAgain.Visibility = Visibility.Visible;
+
+        }
+
+        //Called for every thick of the test again timer
+        void TestAgainTimer_Tick(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("called");
+
+        }
+
+
+        //called when the test gain timer ends
+        void OnTestAgainTimer(Object source, System.Timers.ElapsedEventArgs e)
+        {
+            TestAgainTimer.Enabled = false;
+            CanTest = true;
+
+            //Hind the test again progress bar
+            ProgressUntilTestAgain.Visibility = Visibility.Hidden;
+
         }
 
 
@@ -220,11 +289,7 @@ namespace SUP
 
                 //Close the app if the user gets three right answers in a row
                 if (AnswerIndex == 3)
-                {
-                    CanClose = true;
-                    Close();
-
-                }
+                    CloseApp();
 
             }
             else
@@ -233,9 +298,7 @@ namespace SUP
                 AnswerIndex = 0;
 
                 if(WrongAnswerIndex == WrongAnswerMax)
-                {
-                    //TODO: need to add code
-                }
+                    QuestionEventEnd();
 
                 TextWrongAnswers.Text = "Wrong Answers Left: " + (WrongAnswerMax - WrongAnswerIndex).ToString();
             }
@@ -270,5 +333,6 @@ namespace SUP
 
         }
 
+        private void ProgressUntilTestAgain_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) { }
     }
 }

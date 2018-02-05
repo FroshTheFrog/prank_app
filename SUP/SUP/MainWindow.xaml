@@ -8,10 +8,6 @@
         Title="MainWindow" Height="1080" Width="1920">
     <Grid>
         <MediaElement Name="VidPlayer" HorizontalAlignment="Left" Width="518" Margin="0,0,0,-0.2"/>
-        <TextBlock x:Name="textBlock" Margin="455,30,337.333,940.667" HorizontalAlignment="Center" TextWrapping="Wrap" Width="1121" FontFamily="Arial Black" FontSize="36" Text="Answer my questions if you want your computer back :)">
-            <TextBlock.Effect>
-                <DropShadowEffect Color="White"/>
-            </TextBlock.Effect></TextBlock>
         <TextBlock x:Name="QuestionText" Margin="455,115,337.333,855.667" HorizontalAlignment="Center" TextWrapping="Wrap" Width="1121" FontFamily="Arial Black" FontSize="36" Text="Question">
             <TextBlock.Effect>
                 <DropShadowEffect Color="White"/>
@@ -22,6 +18,7 @@
         <Button x:Name="button3" Content="Button" HorizontalAlignment="Right" Margin="0,448,337.333,0" VerticalAlignment="Top" Width="188" Height="70" FontSize="36" Click="button3_Click"/>
         <TextBlock x:Name="TextWrongAnswers" HorizontalAlignment="Left" Margin="141,228,0,0" TextWrapping="Wrap" Text="Wrong Answers Left: 0" VerticalAlignment="Top" Height="51" Width="295" FontSize="28" RenderTransformOrigin="0.299,0.485" Background="#FFB08282"/>
         <TextBlock x:Name="TextRightAnswers" HorizontalAlignment="Right" Margin="0,228,145.333,0" TextWrapping="Wrap" Text="Right Answers: 0" VerticalAlignment="Top" Height="51" Width="228" FontSize="28" RenderTransformOrigin="0.299,0.485" Background="#FFB08282"/>
+        <ProgressBar x:Name="ProgressUntilTestAgain" HorizontalAlignment="Left" Height="43" VerticalAlignment="Top" Width="1903"/>
 
     </Grid>
 
