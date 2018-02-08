@@ -12,7 +12,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
-using System.Timers;
 
 namespace SUP
 {
@@ -47,9 +46,9 @@ namespace SUP
         //if the user can take the test
         public static bool CanTest = true;
 
-        public static Timer TestAgainTimer;
+        public static System.Windows.Forms.Timer TestAgainTimer;
 
-        public const int TestAgainTime = 30000;
+        public const int TestAgainTime = 15000;
 
 
         public MainWindow()
@@ -134,12 +133,13 @@ namespace SUP
         }
 
         //Cancel window closing event keeping the user from being able to close the window
-        private void MainWindow_Closing(object sender, CancelEventArgs e) {
+        private void MainWindow_Closing(object sender, CancelEventArgs e)
+        {
 
             if (!CanClose)
             {
                 e.Cancel = true;
-                if(CanTest)
+                if (CanTest)
                     QuetionEvent();
 
             }
@@ -160,38 +160,28 @@ namespace SUP
             //So that is program can have random numbers
             Random rnd = new Random();
 
-            if (MyTest.TheQuetions.Count() > 0)
-            {
+            //The Question that will be used
+            Question q = MyTest.TheQuetions[rnd.Next(MyTest.TheQuetions.Count())];
 
-                //The Question that will be used
-                Question q = MyTest.TheQuetions[rnd.Next(MyTest.TheQuetions.Count())];
+            TheAnswer = q.AnsList[3];
 
-                TheAnswer = q.AnsList[3];
+            QuestionText.Text = q.TheQuestion;
 
-                QuestionText.Text = q.TheQuestion;
+            //Random answers for each button
+            button.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
+            q.AnsList.Remove(button.Content.ToString());
 
-                //Random answers for each button
-                button.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
-                q.AnsList.Remove(button.Content.ToString());
+            button1.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
+            q.AnsList.Remove(button1.Content.ToString());
 
-                button1.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
-                q.AnsList.Remove(button1.Content.ToString());
+            button2.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
+            q.AnsList.Remove(button2.Content.ToString());
 
-                button2.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
-                q.AnsList.Remove(button2.Content.ToString());
+            button3.Content = q.AnsList[0];
+            q.AnsList.Remove(button3.Content.ToString());
 
-                button3.Content = q.AnsList[0];
-                q.AnsList.Remove(button3.Content.ToString());
-
-                //So that the question can to be picked again
-                MyTest.TheQuetions.Remove(q);
-            }
-
-            else
-            {
-                System.Windows.Forms.MessageBox.Show("WOW YOU SUCK! Your out of questions");
-                CloseApp();
-            }
+            //So that the question can to be picked again
+            MyTest.TheQuetions.Remove(q);
         }
 
         //Close of window/app
@@ -199,7 +189,7 @@ namespace SUP
         {
 
             CanClose = true;
-            main.Close();
+            Close();
         }
 
         //Hind all the elements on the screen associated with the test
@@ -234,14 +224,17 @@ namespace SUP
 
             //So that it only trigger the first time the user start the test
             if (TestAgainTimer == null)
+            {
                 System.Windows.Forms.MessageBox.Show("Oh! It looks like you want your computer back. Answer three question correctly in a row to get it back");
+                SetNextQuesiton();
+
+            }
 
             CanTest = false;
 
             //Make everything visible
             ShowEverything();
 
-            SetNextQuesiton();
         }
 
         //Ends the current test
@@ -252,24 +245,44 @@ namespace SUP
 
             System.Windows.Forms.MessageBox.Show("Too bad, you ran out of tries. Wait " + (TestAgainTime / 1000) + "s to try again");
 
-            //Test timer until the user can take the test again
-            TestAgainTimer = new Timer { Interval = TestAgainTime, Enabled = true };
-            TestAgainTimer.Elapsed += OnTestAgainTimer;
+            SetupTimer();
 
-            ProgressUntilTestAgain.Visibility = Visibility.Visible;
+            SetupProgressBar();
 
         }
 
-        //Called for every thick of the test again timer
-        void TestAgainTimer_Tick(object sender, EventArgs e)
+        //Test timer until the user can take the test again
+        void SetupTimer()
         {
-            System.Windows.Forms.MessageBox.Show("called");
+
+            TestAgainTimer = new System.Windows.Forms.Timer { Interval = TestAgainTime, Enabled = true };
+            TestAgainTimer.Tick += OnTestAgainTimerTick;
+            TestAgainTimer.Interval = 16; //IDK why 16 work, but it does
+
+        }
+
+        //Set up the progress bar than shows how far the user must wait until he or she can test again
+        void SetupProgressBar()
+        {
+            ProgressUntilTestAgain.Visibility = Visibility.Visible;
+            ProgressUntilTestAgain.Value = 0;
+            ProgressUntilTestAgain.Maximum = TestAgainTime;
+            ProgressUntilTestAgain.Width = SystemParameters.PrimaryScreenWidth;
+
+        }
+
+        void OnTestAgainTimerTick(object sender, EventArgs e)
+        {
+            ProgressUntilTestAgain.Value += 1;
+
+            if (ProgressUntilTestAgain.Value == ProgressUntilTestAgain.Maximum)
+                OnTestAgainTimer();
 
         }
 
 
         //called when the test gain timer ends
-        void OnTestAgainTimer(Object source, System.Timers.ElapsedEventArgs e)
+        void OnTestAgainTimer()
         {
             TestAgainTimer.Enabled = false;
             CanTest = true;
@@ -281,23 +294,30 @@ namespace SUP
 
 
         //The function that is called when an answer is picked
-        void OnButtonClick (Button b)
+        void OnButtonClick(Button b)
         {
+            //If the answer in right
             if (b.Content.ToString() == TheAnswer)
             {
                 AnswerIndex += 1;
 
                 //Close the app if the user gets three right answers in a row
                 if (AnswerIndex == 3)
+                {
+                    System.Windows.Forms.MessageBox.Show("Good Job!");
                     CloseApp();
+                }
 
             }
+
+            //If it is wrong
             else
             {
                 WrongAnswerIndex += 1;
                 AnswerIndex = 0;
 
-                if(WrongAnswerIndex == WrongAnswerMax)
+
+                if (WrongAnswerIndex == WrongAnswerMax && MyTest.TheQuetions.Count() != 0)
                     QuestionEventEnd();
 
                 TextWrongAnswers.Text = "Wrong Answers Left: " + (WrongAnswerMax - WrongAnswerIndex).ToString();
@@ -306,6 +326,14 @@ namespace SUP
             TextRightAnswers.Text = "Right Answers: " + AnswerIndex.ToString();
 
             SetNextQuesiton();
+
+            //If the player has no more answers left
+            //The system only allow for one close at a time
+            if (MyTest.TheQuetions.Count() == 0 && AnswerIndex != 3)
+            {
+                System.Windows.Forms.MessageBox.Show("WOW YOU SUCK! Your out of questions");
+                CloseApp();
+            }
 
         }
 

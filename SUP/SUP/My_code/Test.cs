@@ -31,6 +31,18 @@ namespace SUP.My_code
 
             TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
 
+            TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
+
+            TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
+
+            TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
+
+            TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
+
+            TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
+
+            TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
+
 
 
 
