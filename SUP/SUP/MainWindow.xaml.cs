@@ -50,6 +50,8 @@ namespace SUP
 
         public const int TestAgainTime = 15000;
 
+        public static Media MyMedia = new Media();
+
 
         public MainWindow()
         {
@@ -74,11 +76,8 @@ namespace SUP
 
             Hide();
 
-            //The path of the video file
-            string path = System.IO.Path.Combine(Environment.CurrentDirectory, @"Videos\Rick_it_up.mp4");
-
-            //Set vidplay's source
-            VidPlayer.Source = new Uri(path, UriKind.Absolute);
+            //Set up the video
+            PlayNextVideo(new object(), new RoutedEventArgs());
 
             //Get the with of the primary screen and set it to the media element width
             VidPlayer.Width = SystemParameters.PrimaryScreenWidth;
@@ -88,6 +87,8 @@ namespace SUP
 
             //The highest the volume can be
             VidPlayer.Volume = 1;
+
+            VidPlayer.MediaEnded += PlayNextVideo;
 
             //Make the application fullscreen
             WindowState = WindowState.Maximized;
@@ -101,6 +102,18 @@ namespace SUP
             HideEverything();
 
             TextWrongAnswers.Text = "Wrong Answers Left: " + (WrongAnswerMax - WrongAnswerIndex).ToString();
+        }
+
+        //Called when a video ends
+        void PlayNextVideo(object sender, RoutedEventArgs e)
+        {
+
+            //The path of the video file
+            string path = System.IO.Path.Combine(Environment.CurrentDirectory, MyMedia.GetVideo());
+
+            //Set video's source
+            VidPlayer.Source = new Uri(path, UriKind.Absolute);
+
         }
 
         //Attached to the event for when the volume controller ends
@@ -307,7 +320,6 @@ namespace SUP
                     System.Windows.Forms.MessageBox.Show("Good Job!");
                     CloseApp();
                 }
-
             }
 
             //If it is wrong

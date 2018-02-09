@@ -41,6 +41,8 @@ namespace SUP
         //The function that is called when a hot-key is pressed
         private void HandleHotkey()
         {
+            throw new System.ArgumentException("Parameter cannot be null", "original");
+
             ShowMe.Enabled = true;
         }
 

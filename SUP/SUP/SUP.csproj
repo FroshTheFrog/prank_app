@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="My_code\Media.cs" />
     <Compile Include="My_code\Question.cs" />
     <Compile Include="My_code\Test.cs" />
     <Compile Include="My_code\VolumControl.cs">
