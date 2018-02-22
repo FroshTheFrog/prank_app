@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Timers;
+using System.Windows.Input;
 
 namespace SUP
 {
@@ -13,7 +14,6 @@ namespace SUP
         //Hot-key checkers
         private KeyHandler CheckSpace;
         private KeyHandler CheckEnter;
-        private KeyHandler CheckE;
 
         //1000 = 1 sec
         public int TimerTime = 2000;
@@ -33,15 +33,26 @@ namespace SUP
 
             CheckEnter = new KeyHandler(Keys.Enter, this);
             CheckEnter.Register();
-
-            CheckE = new KeyHandler(Keys.E, this);
-            CheckE.Register();
         }
 
         //The function that is called when a hot-key is pressed
         private void HandleHotkey()
         {
-            throw new System.ArgumentException("Parameter cannot be null", "original");
+
+            //No that it does not get stuck in a loop during the SendKeys.SendWait function
+            CheckEnter.Unregiser();
+            CheckSpace.Unregiser();
+
+            //So that they keys will still register
+            //Windows hooks remaps the key
+            if (Keyboard.IsKeyDown(Key.Enter))
+                SendKeys.SendWait("{ENTER}");
+            else
+                SendKeys.SendWait(" ");
+
+            //Reset the hot-keys
+            CheckSpace.Register();
+            CheckEnter.Register();
 
             ShowMe.Enabled = true;
         }

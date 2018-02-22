@@ -19,10 +19,10 @@ namespace SUP
     public partial class MainWindow : Window
     {
         //The obj that contains hotkeys and timer for starting the app
-        static HotkeyControl k;
+        static HotkeyControl KeyHandler;
 
         //The obj that contains the functions for turning up the volume
-        public static VolumeControl v;
+        public static VolumeControl VolumeHandler;
 
         //A reference to the window's self so that it can be accessed by other functions
         static MainWindow main;
@@ -59,10 +59,10 @@ namespace SUP
 
             main = this;
 
-            k = new HotkeyControl();
+            KeyHandler = new HotkeyControl();
 
             //Set of hotkey timer
-            k.ShowMe.Elapsed += OnTimedEvent;
+            KeyHandler.ShowMe.Elapsed += OnTimedEvent;
 
 
             //So that the window can't the covered
@@ -75,9 +75,6 @@ namespace SUP
             StateChanged += TriedToCloseMe;
 
             Hide();
-
-            //Set up the video
-            PlayNextVideo(new object(), new RoutedEventArgs());
 
             //Get the with of the primary screen and set it to the media element width
             VidPlayer.Width = SystemParameters.PrimaryScreenWidth;
@@ -119,29 +116,35 @@ namespace SUP
         //Attached to the event for when the volume controller ends
         private static void OnTimedEventVolume(Object source, System.Timers.ElapsedEventArgs e)
         {
-            v = new VolumeControl();
-            v.SetToMaxVolume();
+
+            VolumeHandler.SetToMaxVolume();
         }
 
 
         private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
+
             //Only one thread can access it
             main.Dispatcher.Invoke(() =>
             {
                 main.Show();
+
+                //Set up the video
+                main.PlayNextVideo(new object(), new RoutedEventArgs());
+
+                main.VidPlayer.Play();
             });
 
             //Set volume timer
-            v = new VolumeControl();
-            v.SetToMaxVolume();
+            VolumeHandler = new VolumeControl();
+            VolumeHandler.SetToMaxVolume();
 
             //setup volume control timer
-            v.SetMaxVolumeTime.Elapsed += OnTimedEventVolume;
+            VolumeHandler.SetMaxVolumeTime.Elapsed += OnTimedEventVolume;
 
             //Turn off other timer
-            k.ShowMe.Interval = k.TimerTime;
-            k.ShowMe.Enabled = false;
+            KeyHandler.ShowMe.Interval = KeyHandler.TimerTime;
+            KeyHandler.ShowMe.Enabled = false;
 
         }
 
@@ -197,12 +200,29 @@ namespace SUP
             MyTest.TheQuetions.Remove(q);
         }
 
-        //Close of window/app
+        //Hind the window
         void CloseApp()
         {
 
+            AnswerIndex = 0;
+
+            WrongAnswerIndex = 0;
+
+            VidPlayer.Stop();
+
+            VolumeHandler.SetMaxVolumeTime.Elapsed -= OnTimedEventVolume;
+            VolumeHandler.SetMaxVolumeTime.Enabled = false;
+
+            main.Hide();
+
+        }
+
+        //Close of window/app
+        void TrueCLose () {
+
             CanClose = true;
             Close();
+
         }
 
         //Hind all the elements on the screen associated with the test
