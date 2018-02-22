@@ -14,15 +14,13 @@ namespace SUP
         public static extern IntPtr SendMessageW(IntPtr hWnd, int Msg,
             IntPtr wParam, IntPtr lParam);
 
-        //1000 = 1 sec
-        public int TimerTime = 8000;
-        public System.Timers.Timer SetMaxVolumeTime;
+        public System.Timers.Timer SetMaxVolumeTimer;
 
         //Volume control constructor
         public VolumeControl()
         {
             //Instantiate the timer
-            SetMaxVolumeTime = new System.Timers.Timer { Interval = TimerTime, Enabled = true};
+            SetMaxVolumeTimer = new System.Timers.Timer { Interval = Constants.VoluemeTime, Enabled = true};
 
         }
 

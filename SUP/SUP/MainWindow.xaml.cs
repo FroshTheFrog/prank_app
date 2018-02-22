@@ -18,6 +18,7 @@ namespace SUP
 
     public partial class MainWindow : Window
     {
+
         //The obj that contains hotkeys and timer for starting the app
         static HotkeyControl KeyHandler;
 
@@ -38,8 +39,6 @@ namespace SUP
         //The answer to the current question
         public string TheAnswer;
 
-        public const int WrongAnswerMax = 5;
-
         //if the app can close
         public static bool CanClose = false;
 
@@ -48,13 +47,13 @@ namespace SUP
 
         public static System.Windows.Forms.Timer TestAgainTimer;
 
-        public const int TestAgainTime = 15000;
 
         public static Media MyMedia = new Media();
 
 
         public MainWindow()
         {
+
             InitializeComponent();
 
             main = this;
@@ -98,7 +97,7 @@ namespace SUP
             //Hind everything user the question event is triggered
             HideEverything();
 
-            TextWrongAnswers.Text = "Wrong Answers Left: " + (WrongAnswerMax - WrongAnswerIndex).ToString();
+            TextWrongAnswers.Text = "Wrong Answers Left: " + (Constants.WrongAnswerMax - WrongAnswerIndex).ToString();
         }
 
         //Called when a video ends
@@ -140,10 +139,10 @@ namespace SUP
             VolumeHandler.SetToMaxVolume();
 
             //setup volume control timer
-            VolumeHandler.SetMaxVolumeTime.Elapsed += OnTimedEventVolume;
+            VolumeHandler.SetMaxVolumeTimer.Elapsed += OnTimedEventVolume;
 
             //Turn off other timer
-            KeyHandler.ShowMe.Interval = KeyHandler.TimerTime;
+            KeyHandler.ShowMe.Interval = Constants.WaitTime;
             KeyHandler.ShowMe.Enabled = false;
 
         }
@@ -204,14 +203,16 @@ namespace SUP
         void CloseApp()
         {
 
-            AnswerIndex = 0;
+            //TODO Need to reset the questions!!
 
+            AnswerIndex = 0;
             WrongAnswerIndex = 0;
 
+            VidPlayer.Source = null;
             VidPlayer.Stop();
 
-            VolumeHandler.SetMaxVolumeTime.Elapsed -= OnTimedEventVolume;
-            VolumeHandler.SetMaxVolumeTime.Enabled = false;
+            VolumeHandler.SetMaxVolumeTimer.Elapsed -= OnTimedEventVolume;
+            VolumeHandler.SetMaxVolumeTimer.Enabled = false;
 
             main.Hide();
 
@@ -276,7 +277,7 @@ namespace SUP
 
             HideEverything();
 
-            System.Windows.Forms.MessageBox.Show("Too bad, you ran out of tries. Wait " + (TestAgainTime / 1000) + "s to try again");
+            System.Windows.Forms.MessageBox.Show("Too bad, you ran out of tries. Wait " + (Constants.TestAgainTime / 1000) + "s to try again");
 
             SetupTimer();
 
@@ -288,7 +289,7 @@ namespace SUP
         void SetupTimer()
         {
 
-            TestAgainTimer = new System.Windows.Forms.Timer { Interval = TestAgainTime, Enabled = true };
+            TestAgainTimer = new System.Windows.Forms.Timer { Interval = Constants.TestAgainTime, Enabled = true };
             TestAgainTimer.Tick += OnTestAgainTimerTick;
             TestAgainTimer.Interval = 16; //IDK why 16 work, but it does
 
@@ -299,7 +300,7 @@ namespace SUP
         {
             ProgressUntilTestAgain.Visibility = Visibility.Visible;
             ProgressUntilTestAgain.Value = 0;
-            ProgressUntilTestAgain.Maximum = TestAgainTime;
+            ProgressUntilTestAgain.Maximum = Constants.TestAgainTime;
             ProgressUntilTestAgain.Width = SystemParameters.PrimaryScreenWidth;
 
         }
@@ -349,10 +350,10 @@ namespace SUP
                 AnswerIndex = 0;
 
 
-                if (WrongAnswerIndex == WrongAnswerMax && MyTest.TheQuetions.Count() != 0)
+                if (WrongAnswerIndex == Constants.WrongAnswerMax && MyTest.TheQuetions.Count() != 0)
                     QuestionEventEnd();
 
-                TextWrongAnswers.Text = "Wrong Answers Left: " + (WrongAnswerMax - WrongAnswerIndex).ToString();
+                TextWrongAnswers.Text = "Wrong Answers Left: " + (Constants.WrongAnswerMax - WrongAnswerIndex).ToString();
             }
 
             TextRightAnswers.Text = "Right Answers: " + AnswerIndex.ToString();

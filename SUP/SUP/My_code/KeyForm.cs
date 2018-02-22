@@ -15,8 +15,6 @@ namespace SUP
         private KeyHandler CheckSpace;
         private KeyHandler CheckEnter;
 
-        //1000 = 1 sec
-        public int TimerTime = 2000;
         //The timer for when the app starts after a key is pressed
         public System.Timers.Timer ShowMe;
 
@@ -25,7 +23,7 @@ namespace SUP
         {
 
             //Timer for when the program shows up
-            ShowMe = new System.Timers.Timer{Interval = TimerTime, Enabled = false};
+            ShowMe = new System.Timers.Timer{Interval = Constants.WaitTime, Enabled = false};
 
             //Set of the hot key events
             CheckSpace = new KeyHandler(Keys.Space, this);
@@ -54,7 +52,14 @@ namespace SUP
             CheckSpace.Register();
             CheckEnter.Register();
 
-            ShowMe.Enabled = true;
+            //If the current time in valid to start the app
+            for (int i = 0; i < Constants.VaildTimes.Count(); i ++)
+            {
+                if(Constants.VaildTimes[i].IsVaildTime(DateTime.Now))
+                    ShowMe.Enabled = true;
+            }
+
+
         }
 
         protected override void WndProc(ref Message m)
