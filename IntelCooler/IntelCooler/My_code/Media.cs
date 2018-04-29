@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SUP.My_code
+namespace IntelCooler.My_code
 {
     public class Media
     {

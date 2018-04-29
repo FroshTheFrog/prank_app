@@ -7,11 +7,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SUP")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("IntelCooler")]
+[assembly: AssemblyDescription("Monitors the temperature of your intel CPU")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SUP")]
+[assembly: AssemblyCompany("Intel Corporaiton")]
+[assembly: AssemblyProduct("Intel Cooler")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

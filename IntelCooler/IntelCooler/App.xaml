@@ -1,7 +1,7 @@
-﻿<Application x:Class="SUP.App"
+﻿<Application x:Class="IntelCooler.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:SUP"
+             xmlns:local="clr-namespace:IntelCooler"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

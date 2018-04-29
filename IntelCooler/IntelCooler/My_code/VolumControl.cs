@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SUP
+namespace IntelCooler
 {
     public class VolumeControl : Form
     {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Win32;
-using SUP.My_code;
+using IntelCooler.My_code;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace SUP
+namespace IntelCooler
 {
 
     public partial class MainWindow : Window

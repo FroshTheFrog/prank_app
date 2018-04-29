@@ -1,11 +1,11 @@
-﻿using SUP.My_code;
+﻿using IntelCooler.My_code;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SUP
+namespace IntelCooler
 {
     public class Constants
     {
