@@ -12,12 +12,12 @@
             <TextBlock.Effect>
                 <DropShadowEffect Color="White"/>
             </TextBlock.Effect></TextBlock>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="455,448,0,0" VerticalAlignment="Top" Width="188" Height="70" FontSize="36" Click="button_Click" Background="White"/>
-        <Button x:Name="button1" Content="Button" HorizontalAlignment="Right" Margin="0,0,337.333,123.667" VerticalAlignment="Bottom" Width="188" Height="70" FontSize="36" Click="button1_Click" Background="White"/>
-        <Button x:Name="button2" Content="Button" HorizontalAlignment="Left" Margin="455,0,0,123.667" VerticalAlignment="Bottom" Width="188" Height="70" FontSize="36" Click="button2_Click" Background="White"/>
-        <Button x:Name="button3" Content="Button" HorizontalAlignment="Right" Margin="0,448,337.333,0" VerticalAlignment="Top" Width="188" Height="70" FontSize="36" Click="button3_Click" Background="White"/>
-        <TextBlock x:Name="TextWrongAnswers" HorizontalAlignment="Left" Margin="269,228,0,0" TextWrapping="Wrap" Text="Wrong Answers Left: 0" VerticalAlignment="Top" Height="51" Width="304" FontSize="28" RenderTransformOrigin="0.299,0.485" Background="#FF00D8FF" FontFamily="Global User Interface" TextAlignment="Center"/>
-        <TextBlock x:Name="TextRightAnswers" HorizontalAlignment="Right" Margin="0,228,145.333,0" TextWrapping="Wrap" Text="Right Answers: 0" VerticalAlignment="Top" Height="51" Width="304" FontSize="28" RenderTransformOrigin="0.299,0.485" Background="#FF00D8FF" FontStretch="SemiCondensed" FontFamily="Global User Interface" TextAlignment="Center"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="455,448,0,0" VerticalAlignment="Top" Width="188" Height="70" FontSize="36" Click="button_Click"/>
+        <Button x:Name="button1" Content="Button" HorizontalAlignment="Right" Margin="0,0,337.333,123.667" VerticalAlignment="Bottom" Width="188" Height="70" FontSize="36" Click="button1_Click"/>
+        <Button x:Name="button2" Content="Button" HorizontalAlignment="Left" Margin="455,0,0,123.667" VerticalAlignment="Bottom" Width="188" Height="70" FontSize="36" Click="button2_Click"/>
+        <Button x:Name="button3" Content="Button" HorizontalAlignment="Right" Margin="0,448,337.333,0" VerticalAlignment="Top" Width="188" Height="70" FontSize="36" Click="button3_Click"/>
+        <TextBlock x:Name="TextWrongAnswers" HorizontalAlignment="Left" Margin="141,228,0,0" TextWrapping="Wrap" Text="Wrong Answers Left: 0" VerticalAlignment="Top" Height="51" Width="295" FontSize="28" RenderTransformOrigin="0.299,0.485" Background="#FFB08282"/>
+        <TextBlock x:Name="TextRightAnswers" HorizontalAlignment="Right" Margin="0,228,145.333,0" TextWrapping="Wrap" Text="Right Answers: 0" VerticalAlignment="Top" Height="51" Width="228" FontSize="28" RenderTransformOrigin="0.299,0.485" Background="#FFB08282"/>
         <ProgressBar x:Name="ProgressUntilTestAgain" Height="43" VerticalAlignment="Top" Margin="0,0,0.333,0"/>
 
     </Grid>

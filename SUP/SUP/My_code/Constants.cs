@@ -27,20 +27,16 @@ namespace SUP
         //How long the app between setting the volume to max
         public const int VoluemeTime = 8000;
 
-        public const int TestAfterTestTime = 54000000; //TODO: need to write
-
-        public const string AppName = "Intel Temperature Monitor";
-
         //---------------------------Active times:-----------------------
 
         public static IReadOnlyList<ActiveTimeObj> VaildTimes = new List<ActiveTimeObj> {
-        new ActiveTimeObj(DayOfWeek.Monday, new List<int> {0, 2359}),
-        new ActiveTimeObj(DayOfWeek.Tuesday, new List<int> {0, 2359}),
-        new ActiveTimeObj(DayOfWeek.Wednesday, new List<int> {0, 2359}),
-        new ActiveTimeObj(DayOfWeek.Thursday, new List<int> {0, 2359}),
-        new ActiveTimeObj(DayOfWeek.Friday, new List<int> {0, 2359}),
-        new ActiveTimeObj(DayOfWeek.Saturday, new List<int> {0, 2359}),
-        new ActiveTimeObj(DayOfWeek.Sunday, new List<int> {0, 2359})
+        new ActiveTimeObj(DayOfWeek.Monday, new List<int> {1200, 2359}),
+        new ActiveTimeObj(DayOfWeek.Tuesday, new List<int> {1200, 2359}),
+        new ActiveTimeObj(DayOfWeek.Wednesday, new List<int> {1200, 2359}),
+        new ActiveTimeObj(DayOfWeek.Thursday, new List<int> {1200, 2359}),
+        new ActiveTimeObj(DayOfWeek.Friday, new List<int> { 1200, 2359}),
+        new ActiveTimeObj(DayOfWeek.Saturday, new List<int> {1200, 2359}),
+        new ActiveTimeObj(DayOfWeek.Sunday, new List<int> { 1200, 2359})
         };
 
 
