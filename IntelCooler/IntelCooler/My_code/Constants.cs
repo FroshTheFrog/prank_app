@@ -31,6 +31,9 @@ namespace IntelCooler
 
         public const string AppName = "Intel Temperature Monitor";
 
+        public const string WrongAnswerSound = @"Sounds\Wrong.wav";
+        public const string CorrectAnswerSound = @"Sounds\Correct.wav";
+
         //---------------------------Active times:-----------------------
 
         public static IReadOnlyList<ActiveTimeObj> VaildTimes = new List<ActiveTimeObj> {

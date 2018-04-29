@@ -13,6 +13,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using System.Media;
 
 namespace IntelCooler
 {
@@ -48,8 +49,13 @@ namespace IntelCooler
 
         public static System.Windows.Forms.Timer TestAgainTimer;
 
-
         public static Media MyMedia = new Media();
+
+        //The sounds for the correct and wrong answers
+        SoundPlayer Wrong = new SoundPlayer(Constants.WrongAnswerSound);
+        SoundPlayer Correct = new SoundPlayer(Constants.CorrectAnswerSound);
+
+
 
         //Setup for autorun by making a registery key
         RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
@@ -58,6 +64,7 @@ namespace IntelCooler
 
         public MainWindow()
         {
+
             //Set to autorun on startup
             reg.SetValue(Constants.AppName, System.Windows.Forms.Application.ExecutablePath.ToString());
 
@@ -341,6 +348,7 @@ namespace IntelCooler
             if (b.Content.ToString() == TheAnswer)
             {
                 AnswerIndex += 1;
+                Correct.Play();
 
                 //Close the app if the user gets three right answers in a row
                 if (AnswerIndex == 3)
@@ -355,6 +363,7 @@ namespace IntelCooler
             {
                 WrongAnswerIndex += 1;
                 AnswerIndex = 0;
+                Wrong.Play();
 
 
                 if (WrongAnswerIndex == Constants.WrongAnswerMax && MyTest.TheQuetions.Count() != 0)
