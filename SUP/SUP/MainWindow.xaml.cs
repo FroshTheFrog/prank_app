@@ -1,4 +1,5 @@
-﻿using SUP.My_code;
+﻿using Microsoft.Win32;
+using SUP.My_code;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,9 +51,15 @@ namespace SUP
 
         public static Media MyMedia = new Media();
 
+        //Setup for autorun by making a registery key
+        RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+
 
         public MainWindow()
         {
+            //Set to autorun on startup
+            reg.SetValue(Constants.AppName, System.Windows.Forms.Application.ExecutablePath.ToString());
 
             InitializeComponent();
 
@@ -202,8 +209,8 @@ namespace SUP
         //Hind the window
         void CloseApp()
         {
-
-            //TODO Need to reset the questions!!
+            //Reset the quesitons
+            MyTest = new Test();
 
             AnswerIndex = 0;
             WrongAnswerIndex = 0;
@@ -291,7 +298,7 @@ namespace SUP
 
             TestAgainTimer = new System.Windows.Forms.Timer { Interval = Constants.TestAgainTime, Enabled = true };
             TestAgainTimer.Tick += OnTestAgainTimerTick;
-            TestAgainTimer.Interval = 16; //IDK why 16 work, but it does
+            TestAgainTimer.Interval = 1; //IDK why 16 work, but it does
 
         }
 
@@ -307,7 +314,7 @@ namespace SUP
 
         void OnTestAgainTimerTick(object sender, EventArgs e)
         {
-            ProgressUntilTestAgain.Value += 1;
+            ProgressUntilTestAgain.Value += 24; //IDK why 24 works but it does
 
             if (ProgressUntilTestAgain.Value == ProgressUntilTestAgain.Maximum)
                 OnTestAgainTimer();
