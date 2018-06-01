@@ -18,12 +18,17 @@ namespace IntelCooler
         //The timer for when the app starts after a key is pressed
         public System.Timers.Timer ShowMe;
 
+        System.Timers.Timer appStartAgainWait;
+
 
         public HotkeyControl()
         {
 
             //Timer for when the program shows up
-            ShowMe = new System.Timers.Timer{Interval = Constants.WaitTime, Enabled = false};
+            ShowMe = new System.Timers.Timer{Interval = Constants.KeyPressWaitTime, Enabled = false};
+
+            appStartAgainWait = new System.Timers.Timer { Interval = Constants.StartAgainWaitTime, Enabled = false};
+            appStartAgainWait.Elapsed += OnTimedEvent;
 
             //Set of the hot key events
             CheckSpace = new KeyHandler(Keys.Space, this);
@@ -52,13 +57,26 @@ namespace IntelCooler
             CheckSpace.Register();
             CheckEnter.Register();
 
-            //If the current time in valid to start the app
-            for (int i = 0; i < Constants.VaildTimes.Count(); i ++)
+            if (appStartAgainWait.Enabled == false)
             {
-                if(Constants.VaildTimes[i].IsVaildTime(DateTime.Now))
-                    ShowMe.Enabled = true;
+                //If the current time in valid to start the app
+                for (int i = 0; i < Constants.VaildTimes.Count(); i++)
+                {
+                    if (Constants.VaildTimes[i].IsVaildTime(DateTime.Now))
+                    {
+                        ShowMe.Enabled = true;
+                        appStartAgainWait.Enabled = true;
+                    }
+                }
+
             }
 
+        }
+
+        // called when the appStartAgainWait timer ends
+        private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        {
+            appStartAgainWait.Enabled = false;
 
         }
 

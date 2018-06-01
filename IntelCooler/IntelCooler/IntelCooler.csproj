@@ -108,10 +108,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\Videos\Dab.mp4" />
-    <Content Include="bin\Debug\Videos\Rick_it_up.mp4" />
-    <Content Include="bin\Debug\Videos\Rick_it_up.wmv" />
-    <Content Include="bin\Debug\Videos\Vid.mp4" />
+    <Folder Include="bin\Debug\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

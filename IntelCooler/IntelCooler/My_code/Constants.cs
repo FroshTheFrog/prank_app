@@ -22,7 +22,10 @@ namespace IntelCooler
         public const int TestAgainTime = 15000;
 
         //The time that you have to wait for the app to start after a key event
-        public const int WaitTime = 2000;
+        public const int KeyPressWaitTime = 2000;
+
+        //The time in between two incances of the app starting
+        public const int StartAgainWaitTime = 20000;
 
         //How long the app between setting the volume to max
         public const int VoluemeTime = 8000;

@@ -144,7 +144,6 @@ namespace IntelCooler
 
                 //Set up the video
                 main.PlayNextVideo(new object(), new RoutedEventArgs());
-
                 main.VidPlayer.Play();
             });
 
@@ -156,7 +155,7 @@ namespace IntelCooler
             VolumeHandler.SetMaxVolumeTimer.Elapsed += OnTimedEventVolume;
 
             //Turn off other timer
-            KeyHandler.ShowMe.Interval = Constants.WaitTime;
+            KeyHandler.ShowMe.Interval = Constants.KeyPressWaitTime;
             KeyHandler.ShowMe.Enabled = false;
 
         }
@@ -169,7 +168,7 @@ namespace IntelCooler
             {
                 e.Cancel = true;
                 if (CanTest)
-                    QuetionEvent();
+                    QuestionEvent();
 
             }
         }
@@ -181,37 +180,6 @@ namespace IntelCooler
         }
 
         private void textBlock_TextChanged(object sender, TextChangedEventArgs e) { }
-
-
-        void SetNextQuesiton()
-        {
-
-            //So that is program can have random numbers
-            Random rnd = new Random();
-
-            //The Question that will be used
-            Question q = MyTest.TheQuetions[rnd.Next(MyTest.TheQuetions.Count())];
-
-            TheAnswer = q.AnsList[3];
-
-            QuestionText.Text = q.TheQuestion;
-
-            //Random answers for each button
-            button.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
-            q.AnsList.Remove(button.Content.ToString());
-
-            button1.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
-            q.AnsList.Remove(button1.Content.ToString());
-
-            button2.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
-            q.AnsList.Remove(button2.Content.ToString());
-
-            button3.Content = q.AnsList[0];
-            q.AnsList.Remove(button3.Content.ToString());
-
-            //So that the question can to be picked again
-            MyTest.TheQuetions.Remove(q);
-        }
 
         //Hind the window
         void CloseApp()
@@ -266,15 +234,47 @@ namespace IntelCooler
         }
 
 
+        // setup the rext quesiton that will be asked on the screen
+        void SetNextQuestion()
+        {
+
+            //So that is program can have random numbers
+            Random rnd = new Random();
+
+            //The Question that will be used
+            Question q = MyTest.TheQuetions[rnd.Next(MyTest.TheQuetions.Count())];
+
+            TheAnswer = q.AnsList[3];
+
+            QuestionText.Text = q.TheQuestion;
+
+            //Random answers for each button
+            button.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
+            q.AnsList.Remove(button.Content.ToString());
+
+            button1.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
+            q.AnsList.Remove(button1.Content.ToString());
+
+            button2.Content = q.AnsList[rnd.Next(q.AnsList.Count())];
+            q.AnsList.Remove(button2.Content.ToString());
+
+            button3.Content = q.AnsList[0];
+            q.AnsList.Remove(button3.Content.ToString());
+
+            //So that the question can to be picked again
+            MyTest.TheQuetions.Remove(q);
+        }
+
+
         //When the user is asked to answer some questions to get their computer back
-        void QuetionEvent()
+        void QuestionEvent()
         {
 
             //So that it only trigger the first time the user start the test
             if (TestAgainTimer == null)
             {
                 System.Windows.Forms.MessageBox.Show("Oh! It looks like you want your computer back. Answer three question correctly in a row to get it back");
-                SetNextQuesiton();
+                SetNextQuestion();
 
             }
 
@@ -319,6 +319,7 @@ namespace IntelCooler
 
         }
 
+        // the ticks for the progress bar that shows how long the user as to wait to have more quesitons asked
         void OnTestAgainTimerTick(object sender, EventArgs e)
         {
             ProgressUntilTestAgain.Value += 24; //IDK why 24 works but it does
@@ -334,6 +335,9 @@ namespace IntelCooler
         {
             TestAgainTimer.Enabled = false;
             CanTest = true;
+
+            // start the quesitons again
+            QuestionEvent();
 
             //Hind the test again progress bar
             ProgressUntilTestAgain.Visibility = Visibility.Hidden;
@@ -374,7 +378,7 @@ namespace IntelCooler
 
             TextRightAnswers.Text = "Right Answers: " + AnswerIndex.ToString();
 
-            SetNextQuesiton();
+            SetNextQuestion();
 
             //If the player has no more answers left
             //The system only allow for one close at a time
@@ -385,7 +389,6 @@ namespace IntelCooler
             }
 
         }
-
 
         private void button3_Click(object sender, RoutedEventArgs e)
         {
