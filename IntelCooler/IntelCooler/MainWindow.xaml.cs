@@ -261,8 +261,21 @@ namespace IntelCooler
             button3.Content = q.AnsList[0];
             q.AnsList.Remove(button3.Content.ToString());
 
+            //Set button's width
+            SetButtonWidth(button);
+            SetButtonWidth(button1);
+            SetButtonWidth(button2);
+            SetButtonWidth(button3);
+
+
             //So that the question can to be picked again
             MyTest.TheQuetions.Remove(q);
+        }
+
+        // set a button's width based off it's answers size
+        void SetButtonWidth(Button b)
+        {
+            b.Width = b.Content.ToString().Length * Constants.ButtonWidthCoefficient;
         }
 
 
@@ -334,7 +347,6 @@ namespace IntelCooler
         void OnTestAgainTimer()
         {
             TestAgainTimer.Enabled = false;
-            CanTest = true;
 
             // start the quesitons again
             QuestionEvent();

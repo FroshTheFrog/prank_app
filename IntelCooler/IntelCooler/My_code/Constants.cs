@@ -30,6 +30,12 @@ namespace IntelCooler
         //How long the app between setting the volume to max
         public const int VoluemeTime = 8000;
 
+        //How much the a button grows it width due to its number of characters in it's answer
+        public const int ButtonWidthCoefficient = 25;
+
+        // the border around a button's text in width
+        public const int ButtonBorder = 3;
+
         public const string AppName = "Intel Temperature Monitor";
 
         public const string WrongAnswerSound = @"Sounds\Wrong.wav";
