@@ -25,12 +25,10 @@ namespace IntelCooler
         public const int KeyPressWaitTime = 2000;
 
         //The time in between two incances of the app starting
-        public const int StartAgainWaitTime = 20000;
+        public const int StartAgainWaitTime = 7200 * 1000;
 
         //How long the app between setting the volume to max
         public const int VoluemeTime = 8000;
-
-        public const int TestAfterTestTime = 54000000; //TODO: need to write
 
         public const string AppName = "Intel Temperature Monitor";
 

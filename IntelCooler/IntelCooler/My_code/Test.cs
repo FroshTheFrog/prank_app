@@ -19,27 +19,6 @@ namespace IntelCooler.My_code
             TheQuetions = new List<Question>();
 
            //TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
-            TheQuetions.Add(new Question("What is 5!?", "25", "600", "15", "120"));
-
-            //TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
-
-            //TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
-
-            //TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
-
-            //TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
-
-            //TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
-
-            //TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
-
-            //TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
-
-            //TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
-
-            //TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
-
-            //TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
 
 
 

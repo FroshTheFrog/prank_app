@@ -22,7 +22,7 @@ namespace IntelCooler.My_code
 
         }
 
-        //Returns of it is a valid time of the app to run
+        //Returns if it is a valid time for the app to run
         public bool IsVaildTime(DateTime currentTime)
         {
 
@@ -33,7 +33,7 @@ namespace IntelCooler.My_code
             return false;
         }
 
-        //Returns of the current hours is in range
+        //Returns if the current hours is in range
         bool IsInRange(int theTime)
         {
 
