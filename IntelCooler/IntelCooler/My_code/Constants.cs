@@ -52,7 +52,6 @@ namespace IntelCooler
         new ActiveTimeObj(DayOfWeek.Wednesday, new List<int> {1200, 1320}),
         new ActiveTimeObj(DayOfWeek.Thursday, new List<int> {1200, 1320}),
 
-            new ActiveTimeObj(DayOfWeek.Wednesday, new List<int> {0, 2359}),
         //afternoon time
         new ActiveTimeObj(DayOfWeek.Monday, new List<int> {2100, 2359}),
         new ActiveTimeObj(DayOfWeek.Tuesday, new List<int> {2100, 2359}),
