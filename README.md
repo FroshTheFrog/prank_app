@@ -5,7 +5,7 @@ This is a "virus" that was written as a means for one to prank one's friends. It
 
 # Setup:
 Any settings that the user wishes to change can be found in: <br />
-*Troll-Virus/IntelCooler/IntelCooler/My_code/Constants.cs*
+***Troll-Virus/IntelCooler/IntelCooler/My_code/Constants.cs***
 
 The user can add and remove video content in the SetVideos method in: <br />
 ***Troll-Virus/IntelCooler/IntelCooler/My_code/Media.cs*** <br />
