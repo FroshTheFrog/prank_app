@@ -8,11 +8,11 @@ Any settings that the user wishes to change can be found in: <br />
 *Troll-Virus/IntelCooler/IntelCooler/My_code/Constants.cs*
 
 The user can add and remove video content in the SetVideos method in: <br />
-*Troll-Virus/IntelCooler/IntelCooler/My_code/Media.cs* <br />
+***Troll-Virus/IntelCooler/IntelCooler/My_code/Media.cs*** <br />
 The videos folder can be found in the debug folder. That being said, the videos and the sounds must be placed in the program directory during installation.
 
 The user can add and remove questions in the constructor for: <br />
-*Troll-Virus/IntelCooler/IntelCooler/My_code/Test.cs*
+***Troll-Virus/IntelCooler/IntelCooler/My_code/Test.cs***
 
 Once you have setup the program how you want. You can easily build an installer using: <br />
 https://www.advancedinstaller.com/ <br />
