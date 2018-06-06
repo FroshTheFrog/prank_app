@@ -30,6 +30,9 @@ namespace IntelCooler
         //How long the app between setting the volume to max
         public const int VoluemeTime = 8000;
 
+        // the height of a button in a 1080 screen
+        public const int buttonHeight = 70;
+
         //How much the a button grows it width due to its number of characters in it's answer
         public const int ButtonWidthCoefficient = 25;
 
@@ -44,13 +47,20 @@ namespace IntelCooler
         //---------------------------Active times:-----------------------
 
         public static IReadOnlyList<ActiveTimeObj> VaildTimes = new List<ActiveTimeObj> {
-        new ActiveTimeObj(DayOfWeek.Monday, new List<int> {0, 2359}),
-        new ActiveTimeObj(DayOfWeek.Tuesday, new List<int> {0, 2359}),
-        new ActiveTimeObj(DayOfWeek.Wednesday, new List<int> {0, 2359}),
-        new ActiveTimeObj(DayOfWeek.Thursday, new List<int> {0, 2359}),
-        new ActiveTimeObj(DayOfWeek.Friday, new List<int> {0, 2359}),
-        new ActiveTimeObj(DayOfWeek.Saturday, new List<int> {0, 2359}),
-        new ActiveTimeObj(DayOfWeek.Sunday, new List<int> {0, 2359})
+        new ActiveTimeObj(DayOfWeek.Monday, new List<int> {1200, 1320}),
+        new ActiveTimeObj(DayOfWeek.Tuesday, new List<int> {1200, 1320}),
+        new ActiveTimeObj(DayOfWeek.Wednesday, new List<int> {1200, 1320}),
+        new ActiveTimeObj(DayOfWeek.Thursday, new List<int> {1200, 1320}),
+
+            new ActiveTimeObj(DayOfWeek.Wednesday, new List<int> {0, 2359}),
+        //afternoon time
+        new ActiveTimeObj(DayOfWeek.Monday, new List<int> {2100, 2359}),
+        new ActiveTimeObj(DayOfWeek.Tuesday, new List<int> {2100, 2359}),
+        new ActiveTimeObj(DayOfWeek.Wednesday, new List<int> {2100, 2359}),
+        new ActiveTimeObj(DayOfWeek.Thursday, new List<int> {2100, 2359}),
+        new ActiveTimeObj(DayOfWeek.Friday, new List<int> {2100, 2359}),
+        new ActiveTimeObj(DayOfWeek.Saturday, new List<int> {2100, 2359}),
+            new ActiveTimeObj(DayOfWeek.Monday, new List<int> {2100, 2359}),
         };
 
 

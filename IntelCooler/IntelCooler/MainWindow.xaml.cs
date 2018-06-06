@@ -55,7 +55,9 @@ namespace IntelCooler
         SoundPlayer Wrong = new SoundPlayer(Constants.WrongAnswerSound);
         SoundPlayer Correct = new SoundPlayer(Constants.CorrectAnswerSound);
 
-
+        // the raio of the width and hight given the screen size
+        double hightRaio;
+        double widthRaio;
 
         //Setup for autorun by making a registery key
         RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
@@ -64,13 +66,15 @@ namespace IntelCooler
 
         public MainWindow()
         {
-
             //Set to autorun on startup
             reg.SetValue(Constants.AppName, System.Windows.Forms.Application.ExecutablePath.ToString());
 
             InitializeComponent();
 
             main = this;
+
+            hightRaio = main.Height / 1080;
+            widthRaio = main.Width / 1920;
 
             KeyHandler = new HotkeyControl();
 
@@ -112,6 +116,15 @@ namespace IntelCooler
             HideEverything();
 
             TextWrongAnswers.Text = "Wrong Answers Left: " + (Constants.WrongAnswerMax - WrongAnswerIndex).ToString();
+
+            // normalise the elements locations by screen size
+            this.ButtonLocNormalise(button);
+            this.ButtonLocNormalise(button1);
+            this.ButtonLocNormalise(button2);
+            this.ButtonLocNormalise(button3);
+            this.TextBoxLocNormalise(QuestionText);
+            this.TextBoxLocNormalise(TextRightAnswers);
+            this.TextBoxLocNormalise(TextWrongAnswers);
         }
 
         //Called when a video ends
@@ -261,21 +274,37 @@ namespace IntelCooler
             button3.Content = q.AnsList[0];
             q.AnsList.Remove(button3.Content.ToString());
 
-            //Set button's width
-            SetButtonWidth(button);
-            SetButtonWidth(button1);
-            SetButtonWidth(button2);
-            SetButtonWidth(button3);
+            //Set button's and dimensions
+            SetButtonDem(button);
+            SetButtonDem(button1);
+            SetButtonDem(button2);
+            SetButtonDem(button3);
 
 
             //So that the question can to be picked again
             MyTest.TheQuetions.Remove(q);
         }
 
-        // set a button's width based off it's answers size
-        void SetButtonWidth(Button b)
+        // set a button's demintion based of the quesiton size and the screen dimensions based off it's answers size
+        void SetButtonDem(Button b)
         {
-            b.Width = b.Content.ToString().Length * Constants.ButtonWidthCoefficient;
+            b.Width = b.Content.ToString().Length * Constants.ButtonWidthCoefficient * this.widthRaio;
+            b.Height = Constants.buttonHeight * this.hightRaio;
+        }
+
+
+        //NOTE: for some reason I can't abstract this further:
+
+        // Normalise buttons locations of the screen
+        void ButtonLocNormalise(Button b)
+        {
+            b.Margin = new Thickness(b.Margin.Left *this.widthRaio, b.Margin.Top * this.hightRaio, b.Margin.Right * this.widthRaio, b.Margin.Bottom * this.hightRaio);
+        }
+
+        //Normalise a textBox's location
+        void TextBoxLocNormalise(TextBlock t)
+        {
+            t.Margin = new Thickness(t.Margin.Left * this.widthRaio, t.Margin.Top * this.hightRaio, t.Margin.Right * this.widthRaio, t.Margin.Bottom * this.hightRaio);
         }
 
 
