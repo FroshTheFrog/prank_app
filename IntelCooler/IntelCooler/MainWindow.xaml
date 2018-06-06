@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1080" Width="1920">
     <Grid>
-        <MediaElement Name="VidPlayer" HorizontalAlignment="Left" Width="518" Margin="0,0,0,-0.2" LoadedBehavior="Manual"/>
+        <MediaElement Name="VidPlayer" HorizontalAlignment="Center" Width="1903" Margin="0,0,10.333,-0.333" LoadedBehavior="Manual" Stretch="Fill"/>
         <TextBlock x:Name="QuestionText" Margin="455,115,337.333,855.667" HorizontalAlignment="Center" TextWrapping="Wrap" Width="1121" FontFamily="Arial Black" FontSize="36" Text="Question">
             <TextBlock.Effect>
                 <DropShadowEffect Color="White"/>

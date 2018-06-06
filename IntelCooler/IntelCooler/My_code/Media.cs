@@ -31,7 +31,6 @@ namespace IntelCooler.My_code
         {
             //videos.Add("...video path...");
             videos.Add(@"Videos\Rick_it_up.mp4");
-            videos.Add(@"Videos\Dab.mp4");
         }
 
         //Get a video that will be played by the media element
