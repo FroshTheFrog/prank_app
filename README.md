@@ -23,3 +23,4 @@ Once it is intalled, it must be run once for it to be setup. <br />
 **Sounds used:** <br />
 http://www.orangefreesounds.com/wrong-answer-sound-effect/ <br />
 http://www.orangefreesounds.com/bing-sound/ <br />
+(add them to your Sounds folder)
