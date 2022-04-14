@@ -73,14 +73,20 @@ namespace IntelCooler
 
             main = this;
 
-            hightRaio = main.Height / 1080;
-            widthRaio = main.Width / 1920;
+            int devHeight = 1080;
+            int devWidth = 1920;
+
+            // Make the application fullscreen
+            WindowState = WindowState.Maximized;
+            WindowStyle = WindowStyle.None;
+
+            hightRaio = main.Height / devHeight;
+            widthRaio = main.Width / devWidth; 
 
             KeyHandler = new HotkeyControl();
 
             // Set of hotkey timer
             KeyHandler.ShowMe.Elapsed += OnTimedEvent;
-
 
             // So that the window can't the covered
             Topmost = true;
@@ -104,10 +110,6 @@ namespace IntelCooler
 
             VidPlayer.MediaEnded += PlayNextVideo;
 
-            // Make the application fullscreen
-            WindowState = WindowState.Maximized;
-            WindowStyle = WindowStyle.None;
-
             // Find the progress bar showing the time until the user can take the test again
             ProgressUntilTestAgain.Visibility = Visibility.Hidden;
 
@@ -126,7 +128,7 @@ namespace IntelCooler
             this.TextBoxLocNormalise(TextRightAnswers);
             this.TextBoxLocNormalise(TextWrongAnswers);
         }
-
+        
         // Called when a video ends
         void PlayNextVideo(object sender, RoutedEventArgs e)
         {
@@ -143,11 +145,11 @@ namespace IntelCooler
         private static void OnTimedEventVolume(Object source, System.Timers.ElapsedEventArgs e)
         {
 
-            VolumeHandler.SetToMaxVolume();
+            VolumeHandler.SetToMaxVolume(); 
         }
 
 
-        private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e) 
         {
 
             // Only one thread can access it
@@ -315,7 +317,6 @@ namespace IntelCooler
             // So that it only trigger the first time the user start the test
             if (TestAgainTimer == null)
             {
-                System.Windows.Forms.MessageBox.Show("Oh! It looks like you want your computer back. Answer three question correctly in a row to get it back");
                 SetNextQuestion();
 
             }
