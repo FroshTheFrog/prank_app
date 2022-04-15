@@ -76,6 +76,9 @@ namespace IntelCooler
             int devHeight = 1080;
             int devWidth = 1920;
 
+            main.Width = SystemParameters.PrimaryScreenWidth;
+            main.Height = SystemParameters.PrimaryScreenHeight;
+
             // Make the application fullscreen
             WindowState = WindowState.Maximized;
             WindowStyle = WindowStyle.None;
@@ -101,6 +104,7 @@ namespace IntelCooler
 
             // Get the with of the primary screen and set it to the media element width
             VidPlayer.Width = SystemParameters.PrimaryScreenWidth;
+            VidPlayer.Height = SystemParameters.PrimaryScreenHeight;
 
             // Stretch the media element's hight in a uniform way
             VidPlayer.Stretch = Stretch.Uniform;
@@ -145,7 +149,7 @@ namespace IntelCooler
         private static void OnTimedEventVolume(Object source, System.Timers.ElapsedEventArgs e)
         {
 
-            VolumeHandler.SetToMaxVolume(); 
+            VolumeHandler.SetToMaxVolume();
         }
 
 
@@ -229,6 +233,7 @@ namespace IntelCooler
             TextRightAnswers.Visibility = Visibility.Hidden;
             TextWrongAnswers.Visibility = Visibility.Hidden;
             QuestionText.Visibility = Visibility.Hidden;
+            Message.Visibility = Visibility.Hidden;
             button.Visibility = Visibility.Hidden;
             button1.Visibility = Visibility.Hidden;
             button2.Visibility = Visibility.Hidden;
@@ -242,6 +247,7 @@ namespace IntelCooler
             TextRightAnswers.Visibility = Visibility.Visible;
             TextWrongAnswers.Visibility = Visibility.Visible;
             QuestionText.Visibility = Visibility.Visible;
+            Message.Visibility = Visibility.Visible;
             button.Visibility = Visibility.Visible;
             button1.Visibility = Visibility.Visible;
             button2.Visibility = Visibility.Visible;
