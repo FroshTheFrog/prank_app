@@ -7,22 +7,30 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1080" Width="1920">
     <Grid>
-        <MediaElement Name="VidPlayer" HorizontalAlignment="Center" Width="1903" Margin="0,0,10.333,-0.333" LoadedBehavior="Manual" Stretch="Fill"/>
-        <TextBlock x:Name="QuestionText" Margin="455,115,337.333,855.667" HorizontalAlignment="Center" TextWrapping="Wrap" Width="1121" FontFamily="Arial Black" FontSize="36" Text="Question">
+        <MediaElement Name="VidPlayer" HorizontalAlignment="Center" Width="1903" Margin="0,0,0,0" LoadedBehavior="Manual" Stretch="Fill"/>
+		
+		<TextBlock x:Name="Message" Margin="30, 30, 30, 30" TextAlignment ="Center" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Arial Black" FontSize="20" Text="Oh! It looks like you want your computer back. Answer three question correctly in a row to get it back">
+			<TextBlock.Effect>
+				<DropShadowEffect Color="White"/>
+			</TextBlock.Effect>
+		</TextBlock>
+		
+        <TextBlock x:Name="QuestionText" Margin="30, 100, 30, 30" TextAlignment ="Center" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Arial Black" FontSize="30" Text="Question">
             <TextBlock.Effect>
                 <DropShadowEffect Color="White"/>
-            </TextBlock.Effect></TextBlock>
+            </TextBlock.Effect>
+		</TextBlock> 
 		
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="175,448,0,0" VerticalAlignment="Top" Width="300" Height="70" FontSize="30" Click="button_Click" Background="White"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="175,550,0,0" VerticalAlignment="Top" Width="300" Height="70" FontSize="30" Click="button_Click" Background="White"/>
         <Button x:Name="button1" Content="Button" HorizontalAlignment="Right" Margin="0,0,175,125" VerticalAlignment="Bottom" Width="300" Height="70" FontSize="30" Click="button1_Click" Background="White"/>
         <Button x:Name="button2" Content="Button" HorizontalAlignment="Left" Margin="175,0,0,125" VerticalAlignment="Bottom" Width="300" Height="70" FontSize="30" Click="button2_Click" Background="White"/>
-        <Button x:Name="button3" Content="Button" HorizontalAlignment="Right" Margin="0,448,175,0" VerticalAlignment="Top" Width="300" Height="70" FontSize="30" Click="button3_Click" Background="White"/>
+        <Button x:Name="button3" Content="Button" HorizontalAlignment="Right" Margin="0,550,175,0" VerticalAlignment="Top" Width="300" Height="70" FontSize="30" Click="button3_Click" Background="White"/>
 		
         <TextBlock x:Name="TextWrongAnswers" HorizontalAlignment="Left" Margin="192,228,0,0" TextWrapping="Wrap" Text="Wrong Answers Left: 0" VerticalAlignment="Top" Height="51" Width="304" FontSize="28" RenderTransformOrigin="0.299,0.485" Background="#FF00D8FF" FontFamily="Global User Interface" TextAlignment="Center"/>
         <TextBlock x:Name="TextRightAnswers" HorizontalAlignment="Right" Margin="0,228,145.333,0" TextWrapping="Wrap" Text="Right Answers: 0" VerticalAlignment="Top" Height="51" Width="304" FontSize="28" RenderTransformOrigin="0.299,0.485" Background="#FF00D8FF" FontStretch="SemiCondensed" FontFamily="Global User Interface" TextAlignment="Center"/>
         <ProgressBar x:Name="ProgressUntilTestAgain" Height="43" VerticalAlignment="Top" Margin="0,0,0.333,0"/>
 
-    </Grid>
+    </Grid> 
 
 
-</Window>
+</Window> 
