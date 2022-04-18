@@ -1,1 +1,1 @@
-**Note:** If your in the main directory right now, you can't just drag your videos into here. You either need to add them to your solution and specify that they be copied over or add them directly to the `/videos` folder where you are complying to.
+**Note:** If your in the main directory right now, you can't just drag your videos into here. You either need to add them to your solution and specify that they be copied over or add them directly to the `/videos` folder where you are compiling to.
