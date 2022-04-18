@@ -27,7 +27,7 @@ namespace Intel_Thermal_Management.Code
         public const int StartAgainWaitTime = 7200 * 1000;
 
         // How long the app between setting the volume to max
-        public const int VoluemeTime = 8000;
+        public const int VoluemeTime = 120;
 
         // the height of a button in a 1080 screen
         public const int buttonHeight = 70;
