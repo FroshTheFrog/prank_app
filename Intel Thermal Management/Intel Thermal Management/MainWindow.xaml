@@ -22,7 +22,7 @@
         </TextBlock>
 
         <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="175,585,0,0" VerticalAlignment="Top" Width="300" Height="70" FontSize="30" Click="ButtonClick" Background="White"/>
-        <Button x:Name="button1" Content="Button" HorizontalAlignment="Right" Margin="0,0,175,125" VerticalAlignment="Bottom" Width="300" Height="70" FontSize="30" Click="Btton1Click" Background="White"/>
+        <Button x:Name="button1" Content="Button" HorizontalAlignment="Right" Margin="0,0,175,125" VerticalAlignment="Bottom" Width="300" Height="70" FontSize="30" Click="Button1Click" Background="White"/>
         <Button x:Name="button2" Content="Button" HorizontalAlignment="Left" Margin="175,0,0,125" VerticalAlignment="Bottom" Width="300" Height="70" FontSize="30" Click="Button2Click" Background="White"/>
         <Button x:Name="button3" Content="Button" HorizontalAlignment="Right" Margin="0,585,175,0" VerticalAlignment="Top" Width="300" Height="70" FontSize="30" Click="Button3Click" Background="White"/>
 
