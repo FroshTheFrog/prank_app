@@ -32,6 +32,7 @@ namespace Intel_Thermal_Management.Code
         {
             string folder = "Videos";
             string[] videosInFolder = Directory.GetFiles(folder);
+
             foreach (string video in videosInFolder)
             {
                 if (!video.Contains(".md"))
