@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Intel_Thermal_Management"
         mc:Ignorable="d"
-        Title="" Height="450" Width="800" Background="White">
+        Title="" Height="300" Width="600" Background="White">
     <Grid>
-        <TextBlock x:Name="Message" HorizontalAlignment="Center" Foreground="Black" Margin="0,32,0,0" TextWrapping="Wrap" Text="Message goes here" VerticalAlignment="Top" Height="266" Width="690" FontSize="28" FontFamily="Global User Interface" TextAlignment="Center"/>
-        <Button x:Name="OkButton" Content="Ok" HorizontalAlignment="Left" Margin="593,327,0,0" VerticalAlignment="Top" Width="152" Height="77" FontSize="35" Click="ButtonOkClick" Background="Gray" Foreground="White"/>
+        <TextBlock x:Name="Message" HorizontalAlignment="Center" Foreground="Black" Margin="10,10,10,10" TextWrapping="Wrap" Text="Message goes here" VerticalAlignment="Top" Height="209" Width="568" FontSize="16" FontFamily="Global User Interface" TextAlignment="Center"/>
+        <Button x:Name="OkButton" Content="Ok" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="110" Height="42" FontSize="22" Click="ButtonOkClick" Background="Gray" Foreground="White"/>
 
     </Grid>
-</Window>
+</Window> 

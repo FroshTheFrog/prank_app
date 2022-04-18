@@ -61,8 +61,6 @@ namespace Intel_Thermal_Management
         // Setup for autorun by making a registery key
         readonly RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
-
-
         public MainWindow()
         {
             // Set to autorun on startup
@@ -128,9 +126,8 @@ namespace Intel_Thermal_Management
             this.ButtonLocNormalise(button2);
             this.ButtonLocNormalise(button3);
             this.TextBoxLocNormalise(QuestionText);
-            this.TextBoxLocNormalise(Message);
             this.TextBoxLocNormalise(TextRightAnswers);
-            this.TextBoxLocNormalise(TextWrongAnswers);
+            this.TextBoxLocNormalise(TextWrongAnswers); 
         }
 
         // Called when a video ends
@@ -232,7 +229,6 @@ namespace Intel_Thermal_Management
             TextRightAnswers.Visibility = Visibility.Hidden;
             TextWrongAnswers.Visibility = Visibility.Hidden;
             QuestionText.Visibility = Visibility.Hidden;
-            Message.Visibility = Visibility.Hidden;
             button.Visibility = Visibility.Hidden;
             button1.Visibility = Visibility.Hidden;
             button2.Visibility = Visibility.Hidden;
@@ -246,7 +242,6 @@ namespace Intel_Thermal_Management
             TextRightAnswers.Visibility = Visibility.Visible;
             TextWrongAnswers.Visibility = Visibility.Visible;
             QuestionText.Visibility = Visibility.Visible;
-            Message.Visibility = Visibility.Visible;
             button.Visibility = Visibility.Visible;
             button1.Visibility = Visibility.Visible;
             button2.Visibility = Visibility.Visible;
@@ -318,11 +313,13 @@ namespace Intel_Thermal_Management
         // When the user is asked to answer some questions to get their computer back
         void QuestionEvent()
         {
+            string popupText = "Oh! It looks like you want your computer back. Answer three question correctly in a row to get it back";
+            CreatePopup(popupText, () => { });
 
             // So that it only trigger the first time the user start the test
             if (TestAgainTimer == null)
             {
-                SetNextQuestion();
+                SetNextQuestion(); 
 
             }
 
@@ -339,7 +336,8 @@ namespace Intel_Thermal_Management
 
             HideEverything();
 
-            System.Windows.Forms.MessageBox.Show("Too bad, you ran out of tries. Wait " + (Constants.TestAgainTime / 1000) + "s to try again");
+            string popupText = "Too bad, you ran out of tries. Wait " + (Constants.TestAgainTime / 1000) + "s to try again";
+            CreatePopup(popupText, () => { });
 
             SetupTimer();
 
@@ -404,8 +402,8 @@ namespace Intel_Thermal_Management
                 // Close the app if the user gets three right answers in a row
                 if (AnswerIndex == 3)
                 {
-                    System.Windows.Forms.MessageBox.Show("Good Job!");
-                    CloseApp();
+                    string popupText = "Good Job!";
+                    CreatePopup(popupText, () => { CloseApp(); });
                 }
             }
 
@@ -431,7 +429,8 @@ namespace Intel_Thermal_Management
             // The system only allow for one close at a time
             if (MyTest.TheQuetions.Count() == 0 && AnswerIndex != 3)
             {
-                System.Windows.Forms.MessageBox.Show("WOW YOU SUCK! Your out of questions");
+                string popupText = "WOW YOU SUCK! Your out of questions";
+                CreatePopup(popupText, () => { CloseApp(); });
                 CloseApp();
             }
 
@@ -460,6 +459,12 @@ namespace Intel_Thermal_Management
 
         }
 
-        private void ProgressUntilTestAgain_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) { }
+        private void CreatePopup(string message, Action callBack)
+        {
+            Popup popup = new Popup();
+            popup.SetMessage(message);
+            popup.SetClosingCallBack(callBack);
+            popup.Show();
+        }
     }
 }
