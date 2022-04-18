@@ -12,13 +12,13 @@ namespace Intel_Thermal_Management.Code
     class HotkeyControl : Form
     {
         //Hot-key checkers
-        private KeyHandler CheckSpace;
-        private KeyHandler CheckEnter;
+        readonly private KeyHandler CheckSpace;
+        readonly private KeyHandler CheckEnter;
 
         //The timer for when the app starts after a key is pressed
         public System.Timers.Timer ShowMe;
 
-        System.Timers.Timer appStartAgainWait;
+        readonly System.Timers.Timer appStartAgainWait;
 
 
         public HotkeyControl()

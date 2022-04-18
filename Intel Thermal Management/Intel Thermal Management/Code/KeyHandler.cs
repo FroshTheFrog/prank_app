@@ -21,9 +21,9 @@ namespace Intel_Thermal_Management.Code
         [DllImport("user32.dll")]
         private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
-        private int key;
-        private IntPtr hWnd;
-        private int id;
+        readonly private int key;
+        readonly private IntPtr hWnd;
+        readonly private int id;
 
         public KeyHandler(Keys key, Form form)
         {

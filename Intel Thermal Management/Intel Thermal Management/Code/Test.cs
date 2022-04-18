@@ -17,8 +17,8 @@ namespace Intel_Thermal_Management.Code
 
 
             TheQuetions = new List<Question>();
-
-           //TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
+            
+            // TheQuetions.Add(new Question("Quetion", "a1", "a2", "a3", "answer"));
 
             TheQuetions.Add(new Question("What is 5!?", "25", "FIVE!", "15", "120"));
 

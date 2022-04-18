@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IntelCooler.My_code
+namespace Intel_Thermal_Management.Code
 {
     public class Media
     {
@@ -13,7 +13,7 @@ namespace IntelCooler.My_code
         public List<string> videos;
 
         //For random numbers
-        Random rnd;
+        readonly Random rnd;
         
 
         public Media()
