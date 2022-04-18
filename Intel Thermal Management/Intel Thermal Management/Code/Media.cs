@@ -34,8 +34,10 @@ namespace Intel_Thermal_Management.Code
             string[] videosInFolder = Directory.GetFiles(folder);
             foreach (string video in videosInFolder)
             {
-                videos.Add(video); 
-                Console.WriteLine(video);
+                if (!video.Contains(".md"))
+                {
+                    videos.Add(video);
+                }
             } 
         }
 
