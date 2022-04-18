@@ -297,6 +297,4 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
-*.wav
 *.mp4
-*.ini

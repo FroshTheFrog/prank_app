@@ -45,15 +45,5 @@ namespace IntelCooler.My_code
             return false;
 
         }
-
-
-
-
-
-
-
-
-
-
     }
 }

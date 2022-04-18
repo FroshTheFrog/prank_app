@@ -15,9 +15,8 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using System.Media;
 
-namespace IntelCooler
+namespace Intel_Thermal_Management
 {
-
     public partial class MainWindow : Window
     {
 
@@ -84,7 +83,7 @@ namespace IntelCooler
             WindowStyle = WindowStyle.None;
 
             hightRaio = main.Height / devHeight;
-            widthRaio = main.Width / devWidth; 
+            widthRaio = main.Width / devWidth;
 
             KeyHandler = new HotkeyControl();
 
@@ -132,7 +131,7 @@ namespace IntelCooler
             this.TextBoxLocNormalise(TextRightAnswers);
             this.TextBoxLocNormalise(TextWrongAnswers);
         }
-        
+
         // Called when a video ends
         void PlayNextVideo(object sender, RoutedEventArgs e)
         {
@@ -153,7 +152,7 @@ namespace IntelCooler
         }
 
 
-        private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e) 
+        private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
 
             // Only one thread can access it
@@ -220,7 +219,8 @@ namespace IntelCooler
         }
 
         // Close of window/app
-        void TrueCLose () {
+        void TrueCLose()
+        {
 
             CanClose = true;
             Close();
@@ -306,7 +306,7 @@ namespace IntelCooler
         // Normalise buttons locations of the screen
         void ButtonLocNormalise(Button b)
         {
-            b.Margin = new Thickness(b.Margin.Left *this.widthRaio, b.Margin.Top * this.hightRaio, b.Margin.Right * this.widthRaio, b.Margin.Bottom * this.hightRaio);
+            b.Margin = new Thickness(b.Margin.Left * this.widthRaio, b.Margin.Top * this.hightRaio, b.Margin.Right * this.widthRaio, b.Margin.Bottom * this.hightRaio);
         }
 
         // Normalise a textBox's location
