@@ -88,9 +88,7 @@
     <Compile Include="Code\Media.cs" />
     <Compile Include="Code\Question.cs" />
     <Compile Include="Code\Test.cs" />
-    <Compile Include="Code\VolumControl.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Code\VolumControl.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -132,7 +130,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="AudioSwitcher.AudioApi.CoreAudio">
+      <Version>3.0.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Sounds\Correct.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

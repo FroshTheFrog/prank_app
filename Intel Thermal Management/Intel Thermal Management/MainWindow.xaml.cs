@@ -142,14 +142,6 @@ namespace Intel_Thermal_Management
 
         }
 
-        // Attached to the event for when the volume controller ends
-        private static void OnTimedEventVolume(Object source, System.Timers.ElapsedEventArgs e)
-        {
-
-            VolumeHandler.SetToMaxVolume();
-        }
-
-
         private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
 
@@ -165,10 +157,9 @@ namespace Intel_Thermal_Management
 
             // Set volume timer
             VolumeHandler = new VolumeControl();
-            VolumeHandler.SetToMaxVolume();
 
             // setup volume control timer
-            VolumeHandler.SetMaxVolumeTimer.Elapsed += OnTimedEventVolume;
+            VolumeHandler.TurnOnVolumeTimer();
 
             // Turn off other timer
             KeyHandler.ShowMe.Interval = Constants.KeyPressWaitTime;
@@ -207,8 +198,7 @@ namespace Intel_Thermal_Management
             VidPlayer.Source = null;
             VidPlayer.Stop();
 
-            VolumeHandler.SetMaxVolumeTimer.Elapsed -= OnTimedEventVolume;
-            VolumeHandler.SetMaxVolumeTimer.Enabled = false;
+            VolumeHandler.TurnOffVolumeTimer();
 
             main.Hide();
 
