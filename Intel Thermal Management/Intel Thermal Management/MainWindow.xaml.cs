@@ -127,7 +127,9 @@ namespace Intel_Thermal_Management
             this.ButtonLocNormalise(button3);
             this.TextBoxLocNormalise(QuestionText);
             this.TextBoxLocNormalise(TextRightAnswers);
-            this.TextBoxLocNormalise(TextWrongAnswers); 
+            this.TextBoxLocNormalise(TextWrongAnswers);
+
+            VolumeHandler = new VolumeControl();
         }
 
         // Called when a video ends
@@ -154,9 +156,6 @@ namespace Intel_Thermal_Management
                 main.PlayNextVideo(new object(), new RoutedEventArgs());
                 main.VidPlayer.Play();
             });
-
-            // Set volume timer
-            VolumeHandler = new VolumeControl();
 
             // setup volume control timer
             VolumeHandler.TurnOnVolumeTimer();
