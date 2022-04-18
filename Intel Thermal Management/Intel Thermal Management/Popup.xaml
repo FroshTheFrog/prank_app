@@ -1,0 +1,14 @@
+﻿<Window x:Class="Intel_Thermal_Management.Popup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Intel_Thermal_Management"
+        mc:Ignorable="d"
+        Title="" Height="450" Width="800" Background="White">
+    <Grid>
+        <TextBlock x:Name="Message" HorizontalAlignment="Center" Foreground="Black" Margin="0,32,0,0" TextWrapping="Wrap" Text="Message goes here" VerticalAlignment="Top" Height="185" Width="690" FontSize="28" FontFamily="Global User Interface" TextAlignment="Center"/>
+        <Button x:Name="OkButton" Content="Ok" HorizontalAlignment="Left" Margin="524,297,0,0" VerticalAlignment="Top" Width="152" Height="77" FontSize="35" Click="ButtonOkClick" Background="Gray" Foreground="White"/>
+
+    </Grid>
+</Window>

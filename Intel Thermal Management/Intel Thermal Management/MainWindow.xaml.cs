@@ -91,7 +91,7 @@ namespace Intel_Thermal_Management
             KeyHandler.ShowMe.Elapsed += OnTimedEvent;
 
             // So that the window can't the covered
-            Topmost = false;
+            Topmost = true;
 
             // Add closing blocking func to the main window closing event so that the window can't closed
             Closing += MainWindow_Closing;
