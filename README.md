@@ -7,8 +7,7 @@ This is a "virus" that was written as a means for one to prank one's friends. It
 Any settings that the user wishes to change can be found in: <br />
 ***Troll-Virus/Intel Thermal Management/Intel Thermal Management/My_code/Constants.cs***
 
-You can add and remove videos by adding them to the videos folder located in the the program directory where you are bulding to.<br />
-Alternatively, you can specify to include them during your build.
+You can add and remove videos in the videos folder located in the the program directory where you are bulding to. Alternatively, you can specify to include them during your build.<br />
 
 The user can add and remove questions in the constructor for: <br />
 ***Troll-Virus/Intel Thermal Management/Intel Thermal Management/My_code/Test.cs***
