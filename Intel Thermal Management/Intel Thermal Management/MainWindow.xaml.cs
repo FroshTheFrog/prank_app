@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using IntelCooler.My_code;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using System.Media;
+using Intel_Thermal_Management.Code;
 
 namespace Intel_Thermal_Management
 {

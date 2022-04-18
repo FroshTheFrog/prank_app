@@ -1,11 +1,10 @@
-﻿using IntelCooler.My_code;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IntelCooler
+namespace Intel_Thermal_Management.Code
 {
     public class Constants
     {

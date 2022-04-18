@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Timers;
 using System.Windows.Input;
 
-namespace IntelCooler
+namespace Intel_Thermal_Management.Code
 {
     class HotkeyControl : Form
     {

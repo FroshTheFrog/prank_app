@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 // using AudioSwitcher.AudioApi.CoreAudio;
 
-namespace IntelCooler
+namespace Intel_Thermal_Management.Code
 {
     public class VolumeControl : Form
     {

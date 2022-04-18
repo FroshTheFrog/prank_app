@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IntelCooler.My_code
+namespace Intel_Thermal_Management.Code
 {
     public class ActiveTimeObj
     {
