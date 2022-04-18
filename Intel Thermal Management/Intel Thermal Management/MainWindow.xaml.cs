@@ -80,7 +80,7 @@ namespace Intel_Thermal_Management
 
             // Make the application fullscreen
             WindowState = WindowState.Maximized;
-            WindowStyle = WindowStyle.None;
+            WindowStyle = WindowStyle.None; 
 
             hightRaio = main.Height / devHeight;
             widthRaio = main.Width / devWidth;
@@ -128,6 +128,7 @@ namespace Intel_Thermal_Management
             this.ButtonLocNormalise(button2);
             this.ButtonLocNormalise(button3);
             this.TextBoxLocNormalise(QuestionText);
+            this.TextBoxLocNormalise(Message);
             this.TextBoxLocNormalise(TextRightAnswers);
             this.TextBoxLocNormalise(TextWrongAnswers);
         }
