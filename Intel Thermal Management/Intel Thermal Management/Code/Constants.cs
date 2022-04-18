@@ -39,7 +39,7 @@ namespace IntelCooler
         // the border around a button's text in width
         public const int ButtonBorder = 3;
 
-        public const string AppName = "Intel Temperature Monitor";
+        public const string AppName = "Intel Thermal Management";
 
         public const string WrongAnswerSound = @"Sounds\Wrong.wav";
         public const string CorrectAnswerSound = @"Sounds\Correct.wav";
@@ -55,11 +55,5 @@ namespace IntelCooler
         new ActiveTimeObj(DayOfWeek.Saturday, new List<int> {0, 2359}),
         new ActiveTimeObj(DayOfWeek.Monday, new List<int> {0, 2359}),
         };
-
-
-
-
     };
-
-
 }
