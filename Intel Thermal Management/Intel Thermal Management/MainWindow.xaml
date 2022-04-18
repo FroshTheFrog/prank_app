@@ -14,7 +14,7 @@
 
         <TextBlock x:Name="QuestionText" Margin="0,133,0,742" TextAlignment ="Center" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Arial Black" FontSize="30" Text="Question" Width="1570">
             <TextBlock.Effect>
-                <DropShadowEffect Color="White"/>
+                <DropShadowEffect Color="White" BlurRadius="0" ShadowDepth="3"/>
             </TextBlock.Effect>
         </TextBlock>
 
