@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="" Height="450" Width="800" Background="White">
     <Grid>
-        <TextBlock x:Name="Message" HorizontalAlignment="Center" Foreground="Black" Margin="0,32,0,0" TextWrapping="Wrap" Text="Message goes here" VerticalAlignment="Top" Height="185" Width="690" FontSize="28" FontFamily="Global User Interface" TextAlignment="Center"/>
-        <Button x:Name="OkButton" Content="Ok" HorizontalAlignment="Left" Margin="524,297,0,0" VerticalAlignment="Top" Width="152" Height="77" FontSize="35" Click="ButtonOkClick" Background="Gray" Foreground="White"/>
+        <TextBlock x:Name="Message" HorizontalAlignment="Center" Foreground="Black" Margin="0,32,0,0" TextWrapping="Wrap" Text="Message goes here" VerticalAlignment="Top" Height="266" Width="690" FontSize="28" FontFamily="Global User Interface" TextAlignment="Center"/>
+        <Button x:Name="OkButton" Content="Ok" HorizontalAlignment="Left" Margin="593,327,0,0" VerticalAlignment="Top" Width="152" Height="77" FontSize="35" Click="ButtonOkClick" Background="Gray" Foreground="White"/>
 
     </Grid>
 </Window>
