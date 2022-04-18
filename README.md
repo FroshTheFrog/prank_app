@@ -1,9 +1,9 @@
-# About:
+# About
 **Disclaimer:** This program was by no means written to be malicious; nor was it written with the capabilities to sneak onto someone's computer. Instead, it was made to mess with one's friends. For this reason, it must be manually installed.
 
 This is a "virus" that was written as a means for one to prank one's friends. It was written using the .net framework in C#. The "virus" lies dormant on one's computer upon its startup. During the virus's specified activation time, if the user presses the space bar or enter, the virus will hijack one's computer. It will turn the user's volume permanently up, and it will cover the screen with a looping playlist of videos. The videos cannot be force-quit, minimized or covered up. Rather, if the user tries to close out of the virus, the user will be prompted to answer trivia questions that appear on the screen. If the user gets three right in a row, they get their computer back... until next time.
 
-# Setup:
+# Setup
 Any settings that the user wishes to change can be found in: <br />
 ***Troll-Virus/Intel Thermal Management/Intel Thermal Management/My_code/Constants.cs***
 
