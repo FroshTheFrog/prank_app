@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,13 @@ namespace Intel_Thermal_Management.Code
         //Reset the video for the play list
         void SetVideos()
         {
-            //videos.Add("...video path...");
+            string folder = "Videos";
+            string[] videosInFolder = Directory.GetFiles(folder);
+            foreach (string video in videosInFolder)
+            {
+                videos.Add(video); 
+                Console.WriteLine(video);
+            } 
         }
 
         //Get a video that will be played by the media element
@@ -37,7 +44,9 @@ namespace Intel_Thermal_Management.Code
         {
 
             if (videos.Count() == 0)
+            {
                 SetVideos();
+            }
 
             //The video that will be played
             string v = videos[rnd.Next(videos.Count())];
