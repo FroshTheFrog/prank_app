@@ -51,15 +51,15 @@ namespace Intel_Thermal_Management
         public static Media MyMedia = new Media();
 
         // The sounds for the correct and wrong answers
-        SoundPlayer Wrong = new SoundPlayer(Constants.WrongAnswerSound);
-        SoundPlayer Correct = new SoundPlayer(Constants.CorrectAnswerSound);
+        readonly SoundPlayer Wrong = new SoundPlayer(Constants.WrongAnswerSound);
+        readonly SoundPlayer Correct = new SoundPlayer(Constants.CorrectAnswerSound);
 
         // the raio of the width and hight given the screen size
-        double hightRaio;
-        double widthRaio;
+        readonly double hightRaio;
+        readonly double widthRaio;
 
         // Setup for autorun by making a registery key
-        RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+        readonly RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
 
 
@@ -196,8 +196,6 @@ namespace Intel_Thermal_Management
             // Only one thread can access it
             WindowState = WindowState.Maximized;
         }
-
-        private void textBlock_TextChanged(object sender, TextChangedEventArgs e) { }
 
         // Hind the window
         void CloseApp()
@@ -438,24 +436,24 @@ namespace Intel_Thermal_Management
 
         }
 
-        private void button3_Click(object sender, RoutedEventArgs e)
+        private void Button3Click(object sender, RoutedEventArgs e)
         {
             OnButtonClick(button3);
         }
 
-        private void button2_Click(object sender, RoutedEventArgs e)
+        private void Button2Click(object sender, RoutedEventArgs e)
         {
             OnButtonClick(button2);
 
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void Button1Click(object sender, RoutedEventArgs e)
         {
             OnButtonClick(button1);
 
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void ButtonClick(object sender, RoutedEventArgs e)
         {
             OnButtonClick(button);
 
