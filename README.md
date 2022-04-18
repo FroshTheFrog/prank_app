@@ -5,14 +5,13 @@ This is a "virus" that was written as a means for one to prank one's friends. It
 
 # Setup:
 Any settings that the user wishes to change can be found in: <br />
-***Troll-Virus/IntelCooler/IntelCooler/My_code/Constants.cs***
+***Troll-Virus/Intel Thermal Management/Intel Thermal Management/My_code/Constants.cs***
 
-The user can add and remove video content in the SetVideos method in: <br />
-***Troll-Virus/IntelCooler/IntelCooler/My_code/Media.cs*** <br />
-The videos folder can be found in the debug folder. That being said, the videos and the sounds must be placed in the program directory during installation.
+You can add and remove videos by adding them to the videos folder located in the the program directory where you are bulding to.<br />
+Alternatively, you can specify to include them during your build.
 
 The user can add and remove questions in the constructor for: <br />
-***Troll-Virus/IntelCooler/IntelCooler/My_code/Test.cs***
+***Troll-Virus/Intel Thermal Management/Intel Thermal Management/My_code/Test.cs***
 
 Once you have setup the program how you want. You can easily build an installer using: <br />
 https://www.advancedinstaller.com/ <br />
@@ -23,4 +22,3 @@ Once it is intalled, it must be run once for it to be setup. <br />
 **Sounds used:** <br />
 http://www.orangefreesounds.com/wrong-answer-sound-effect/ <br />
 http://www.orangefreesounds.com/bing-sound/ <br />
-(add them to your Sounds folder and name them "Wrong.wav" and "Correct.wav")
