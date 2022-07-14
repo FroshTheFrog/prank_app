@@ -21,7 +21,7 @@ namespace Intel_Thermal_Management.Code
         public const int TestAgainTime = 15000;
 
         // The time that you have to wait for the app to start after a key event
-        public const int KeyPressWaitTime = 20000;
+        public const int KeyPressWaitTime = 120000;
 
         // The time in between two incances of the app starting
         public const int StartAgainWaitTime = 7200 * 1000;
