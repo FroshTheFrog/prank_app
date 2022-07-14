@@ -14,9 +14,10 @@ The user can add and remove questions in the constructor for: <br />
 
 Once you have setup the program how you want. You can easily build an installer using: <br />
 https://www.advancedinstaller.com/ <br />
-Once it is intalled, it must be run once for it to be setup. <br />
-
-**NOTE:** When setting up the installer, you should choose to launch from the release configuration. When doing this, make sure that you build the latest version of your project from this configuration, not the debug.
+**Some things to note**
+* Once it is intalled, it must be run once for it to be setup. <br />
+* When setting up the installer, you should choose to launch from the release configuration. When doing this, make sure that you build the latest version of your project from this configuration, not the debug.
+* Make sure to edit the files and folders settings so that a /Videos and a /Sounds folder i- created with all the videos and sounds in them.
 
 **Sounds used:** <br />
 http://www.orangefreesounds.com/wrong-answer-sound-effect/ <br />
