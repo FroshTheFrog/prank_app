@@ -15,10 +15,10 @@
             </TextBlock.Effect>
         </TextBlock>
 
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="175,585,0,0" VerticalAlignment="Top" Width="100" Height="70" FontSize="25" Click="ButtonClick" Background="White"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="175,568,0,0" VerticalAlignment="Top" Width="100" Height="70" FontSize="25" Click="ButtonClick" Background="White"/>
         <Button x:Name="button1" Content="Button" HorizontalAlignment="Right" Margin="0,0,175,125" VerticalAlignment="Bottom" Width="100" Height="70" FontSize="25" Click="Button1Click" Background="White"/>
-        <Button x:Name="button2" Content="Button" HorizontalAlignment="Left" Margin="175,0,0,125" VerticalAlignment="Bottom" Width="100" Height="70" FontSize="25" Click="Button2Click" Background="White"/>
-        <Button x:Name="button3" Content="Button" HorizontalAlignment="Right" Margin="0,585,175,0" VerticalAlignment="Top" Width="100" Height="70" FontSize="25" Click="Button3Click" Background="White"/>
+        <Button x:Name="button2" Content="Button" HorizontalAlignment="Left" Margin="175,0,0,222" VerticalAlignment="Bottom" Width="100" Height="70" FontSize="25" Click="Button2Click" Background="White"/>
+        <Button x:Name="button3" Content="Button" HorizontalAlignment="Right" Margin="0,685,175,0" VerticalAlignment="Top" Width="100" Height="70" FontSize="25" Click="Button3Click" Background="White"/>
 
         <TextBlock x:Name="TextWrongAnswers" HorizontalAlignment="Left" Margin="173,350,0,0" TextWrapping="Wrap" Text="Wrong Answers Left: 0" VerticalAlignment="Top" Height="51" Width="304" FontSize="28" RenderTransformOrigin="0.299,0.485" Background="#FF00D8FF" FontFamily="Global User Interface" TextAlignment="Center"/>
         <TextBlock x:Name="TextRightAnswers" HorizontalAlignment="Right" Margin="0,350,175,0" TextWrapping="Wrap" Text="Right Answers: 0" VerticalAlignment="Top" Height="51" Width="304" FontSize="28" RenderTransformOrigin="0.299,0.485" Background="#FF00D8FF" FontStretch="SemiCondensed" FontFamily="Global User Interface" TextAlignment="Center"/>
