@@ -391,7 +391,7 @@ namespace Intel_Thermal_Management
                 // Close the app if the user gets three right answers in a row
                 if (AnswerIndex == 3)
                 {
-                    string popupText = "Good Job!";
+                    string popupText = "Good Job! ...until next time :)";
                     CreatePopup(popupText, () => { CloseApp(); });
                 }
             }
