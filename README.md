@@ -1,3 +1,7 @@
+### **Note:** The bulk of this code is from 2017/early 2018. If you know me, please don’t judge my code quality based on this lol.
+
+---
+
 # About
 **Disclaimer:** This program was by no means written to be malicious; nor was it written with the capabilities to sneak onto someone's computer. Instead, it was made to mess with one's friends. For this reason, it must be manually installed.
 
